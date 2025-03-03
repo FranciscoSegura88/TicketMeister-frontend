@@ -1,0 +1,80 @@
+<header class="bg-blue-500 p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Nombre de la aplicación (izquierda) -->
+        <h1 class="italic font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+            TicketMeister
+        </h1>
+
+        <!-- Botones de navegación (derecha) -->
+        <nav class="hidden sm:block">
+            <ul class="flex space-x-4">
+                @if (isLoggedIn) {
+                    <!-- Opciones cuando el usuario ha iniciado sesión -->
+                    <li>
+                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Mis eventos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Mi perfil
+                        </a>
+                    </li>
+                    <li>
+                        <button (click)="logout()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Cerrar sesión
+                        </button>
+                    </li>
+                } @else {
+                    <!-- Opción cuando el usuario no ha iniciado sesión -->
+                    <li>
+                        <button (click)="login()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Iniciar sesión
+                        </button>
+                    </li>
+                }
+            </ul>
+        </nav>
+
+        <!-- Menú hamburguesa para móviles -->
+        <button class="sm:hidden text-white focus:outline-none" (click)="toggleMenu()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Menú desplegable para móviles -->
+    @if (isMenuOpen) {
+        <nav class="sm:hidden absolute right-0 mt-2 w-48 bg-blue-500 rounded-lg shadow-lg z-10 transform transition-transform duration-300 ease-in-out"
+            [class]="isMenuOpen ? 'translate-x-0' : 'translate-x-full'">
+            <ul class="flex flex-col space-y-2 p-4">
+                @if (isLoggedIn) {
+                    <!-- Opciones cuando el usuario ha iniciado sesión -->
+                    <li>
+                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Mis eventos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Mi perfil
+                        </a>
+                    </li>
+                    <li>
+                        <button (click)="logout()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Cerrar sesión
+                        </button>
+                    </li>
+                } @else {
+                    <!-- Opción cuando el usuario no ha iniciado sesión -->
+                    <li>
+                        <button (click)="login()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Iniciar sesión
+                        </button>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</header>
