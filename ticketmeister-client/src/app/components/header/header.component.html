@@ -9,28 +9,21 @@
         <nav class="hidden sm:block">
             <ul class="flex space-x-4">
                 @if (isLoggedIn) {
-                    <!-- Opciones cuando el usuario ha iniciado sesión -->
-                    <li>
-                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Mis eventos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Mi perfil
-                        </a>
-                    </li>
                     <li>
                         <button (click)="logout()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
                             Cerrar sesión
                         </button>
                     </li>
                 } @else {
-                    <!-- Opción cuando el usuario no ha iniciado sesión -->
                     <li>
-                        <button (click)="login()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                        <a [routerLink]="['/login']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
                             Iniciar sesión
-                        </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/register']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                            Registrarse
+                        </a>
                     </li>
                 }
             </ul>
@@ -43,38 +36,4 @@
             </svg>
         </button>
     </div>
-
-    <!-- Menú desplegable para móviles -->
-    @if (isMenuOpen) {
-        <nav class="sm:hidden absolute right-0 mt-2 w-48 bg-blue-500 rounded-lg shadow-lg z-10 transform transition-transform duration-300 ease-in-out"
-            [class]="isMenuOpen ? 'translate-x-0' : 'translate-x-full'">
-            <ul class="flex flex-col space-y-2 p-4">
-                @if (isLoggedIn) {
-                    <!-- Opciones cuando el usuario ha iniciado sesión -->
-                    <li>
-                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Mis eventos
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Mi perfil
-                        </a>
-                    </li>
-                    <li>
-                        <button (click)="logout()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Cerrar sesión
-                        </button>
-                    </li>
-                } @else {
-                    <!-- Opción cuando el usuario no ha iniciado sesión -->
-                    <li>
-                        <button (click)="login()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Iniciar sesión
-                        </button>
-                    </li>
-                }
-            </ul>
-        </nav>
-    }
 </header>
