@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EventService, Event } from '../../services/event.service';
+
 
 @Component({
   selector: 'app-content',
@@ -6,6 +8,24 @@ import { Component } from '@angular/core';
   templateUrl: './content.component.html',
   styleUrl: './content.component.css'
 })
-export class ContentComponent {
+export class ContentComponent implements OnInit {
+  events: Event[] = [];
+
+  constructor(private eventService: EventService) {}
+
+  ngOnInit(): void {
+    this.loadEvents();
+  }
+
+  loadEvents(): void {
+    this.eventService.getEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+      },
+      error: (error) => {
+        console.error('Error al cargar los eventos', error);
+      }
+    });
+  }
 
 }
