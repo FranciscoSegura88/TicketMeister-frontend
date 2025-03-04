@@ -8,24 +8,16 @@
         <!-- Botones de navegación (derecha) -->
         <nav class="hidden sm:block">
             <ul class="flex space-x-4">
-                @if (isLoggedIn) {
-                    <li>
-                        <button (click)="logout()" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Cerrar sesión
-                        </button>
-                    </li>
-                } @else {
-                    <li>
-                        <a [routerLink]="['/login']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Iniciar sesión
-                        </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/register']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
-                            Registrarse
-                        </a>
-                    </li>
-                }
+                <li>
+                    <a [routerLink]="['/login']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                        Iniciar sesión
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/register']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                        Registrarse
+                    </a>
+                </li>
             </ul>
         </nav>
 
@@ -36,4 +28,22 @@
             </svg>
         </button>
     </div>
+
+    <!-- Menú desplegable para móviles -->
+    @if (isMenuOpen) {
+        <nav class="sm:hidden absolute right-0 mt-2 w-48 bg-blue-500 rounded-lg shadow-lg z-10">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li>
+                    <a [routerLink]="['/login']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                        Iniciar sesión
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/register']" class="text-white font-semibold text-lg hover:text-blue-200 transition-colors">
+                        Registrarse
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    }
 </header>
