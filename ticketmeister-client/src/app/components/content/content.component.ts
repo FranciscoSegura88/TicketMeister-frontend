@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService, Event } from '../../services/event.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({

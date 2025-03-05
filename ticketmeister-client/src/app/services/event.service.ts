@@ -7,7 +7,7 @@ export interface Event {
   title: string;
   description: string;
   posterUrl: string;
-  date: string;
+  date: Date;
 }
 
 @Injectable({
