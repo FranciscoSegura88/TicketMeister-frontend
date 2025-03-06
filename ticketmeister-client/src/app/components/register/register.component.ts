@@ -11,14 +11,14 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  name: string = '';
+  username: string = '';
   email: string = '';
   password: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegister() {
-    const userData = { name: this.name, email: this.email, password: this.password };
+    const userData = { username: this.username, email: this.email, password: this.password };
 
     this.authService.register(userData).subscribe({
       next: (response) => {
