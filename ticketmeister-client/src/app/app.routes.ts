@@ -7,5 +7,5 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'content', component: ContentComponent},
-    {path: '/', redirectTo: '/content', pathMatch: 'full'}
+    {path: '', redirectTo: '/content', pathMatch: 'full'}
 ];
