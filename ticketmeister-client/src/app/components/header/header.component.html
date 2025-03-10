@@ -1,9 +1,12 @@
-<header class="bg-blue-500 p-4">
+<header class="bg-gradient-to-r from-[#F22E52] via-[#F24C27] to-[#F2780C] w-full h-24 p-4">
     <div class="container mx-auto flex items-center justify-between">
         <!-- Nombre de la aplicación (izquierda) -->
         <h1 class="italic font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-          <a [routerLink]="['/content']" class="cursor-pointer">TicketMeister</a>
-      </h1>
+          <a [routerLink]="['/content']" class="cursor-pointer flex items-center space-x-2">
+            <img class="h-20 w-auto" src="logo.svg" alt="logo">
+            <span>TicketMeister</span>
+          </a>
+        </h1>
 
         <!-- Botones de navegación (derecha) -->
         <nav class="hidden sm:block">

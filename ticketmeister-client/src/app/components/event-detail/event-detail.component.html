@@ -1,0 +1,46 @@
+<div class="p-8">
+  <!-- Botón para volver atrás -->
+  <a [routerLink]="['/content']" class="text-blue-500 hover:text-blue-700 transition-colors">
+      &larr; Volver a los eventos
+  </a>
+
+  <!-- Detalles del evento -->
+  @if (event) {
+      <div class="mt-6 bg-white rounded-lg shadow-lg overflow-hidden">
+          <!-- Imagen del evento -->
+          <img [src]="event.posterUrl" [alt]="event.title" class="w-full h-64 object-cover">
+
+          <!-- Contenido del evento -->
+          <div class="p-6">
+              <!-- Título del evento -->
+              <h1 class="text-3xl font-bold text-gray-800">{{ event.title }}</h1>
+
+              <!-- Ubicación del evento -->
+              <div class="mt-4">
+                  <p class="text-lg text-gray-600">
+                      <span class="font-semibold">País:</span> {{ event.country }}
+                  </p>
+                  <p class="text-lg text-gray-600">
+                      <span class="font-semibold">Estado:</span> {{ event.state }}
+                  </p>
+                  <p class="text-lg text-gray-600">
+                      <span class="font-semibold">Ciudad:</span> {{ event.city }}
+                  </p>
+              </div>
+
+              <!-- Fecha del evento -->
+              <p class="mt-4 text-lg text-gray-600">
+                  <span class="font-semibold">Fecha:</span> {{ event.date | date }}
+              </p>
+
+              <!-- Descripción del evento -->
+              <div class="mt-6">
+                  <h2 class="text-xl font-semibold text-gray-800">Descripción</h2>
+                  <p class="mt-2 text-gray-600">{{ event.description }}</p>
+              </div>
+          </div>
+      </div>
+  } @else {
+      <p class="text-center text-gray-600">Cargando detalles del evento...</p>
+  }
+</div>
