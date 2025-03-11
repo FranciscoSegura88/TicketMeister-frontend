@@ -8,6 +8,7 @@ export interface Event {
   posterUrl: string;
   country: string;
   state: string;
+  theater: string;
   city: string;
   date: Date;
   description: string;

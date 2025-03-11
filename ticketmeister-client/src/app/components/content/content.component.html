@@ -1,41 +1,48 @@
 <div class="p-8">
   <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Eventos Disponibles</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- Tarjeta de evento -->
-      @for (event of events; track event.id) {
-          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <!-- Imagen del evento -->
-              <img [src]="event.posterUrl" [alt]="event.title" class="w-full h-48 object-cover">
+    <!-- Tarjeta de evento -->
+    @for (event of events; track event.id) {
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <!-- Imagen del evento -->
+      <img [src]="event.posterUrl" [alt]="event.title" class="w-full h-48 object-cover">
 
-              <!-- Contenido de la tarjeta -->
-              <div class="p-4">
-                  <!-- Título del evento -->
-                  <h3 class="text-xl font-semibold text-gray-800">{{ event.title }}</h3>
+      <!-- Contenido de la tarjeta -->
+      <div class="p-4">
+        <!-- Título del evento -->
+        <h3 class="text-xl font-semibold text-gray-800">{{ event.title }}</h3>
 
-                  <!-- Ubicación del evento -->
-                  <p class="text-sm text-gray-600 mt-2">
-                      <span class="font-semibold">País:</span> {{ event.country }}
-                  </p>
-                  <p class="text-sm text-gray-600">
-                      <span class="font-semibold">Estado:</span> {{ event.state }}
-                  </p>
-                  <p class="text-sm text-gray-600">
-                      <span class="font-semibold">Ciudad:</span> {{ event.city }}
-                  </p>
+        <!-- Ubicación del evento -->
+        <p class="text-lg text-gray-600 mt-2">
+          <span class="font-bold">Lugar:</span> {{ event.theater }}
+        </p>
 
-                  <!-- Fecha del evento -->
-                  <p class="text-sm text-gray-600 mt-2">
-                      <span class="font-semibold">Fecha:</span> {{ event.date | date }}
-                  </p>
+        <!-- Fecha del evento -->
+        <p class="text-sm text-gray-600 mt-2">
+          <span class="font-semibold">Fecha:</span> {{ event.date | date:'medium' }}
+        </p>
 
-                  <!-- Botón para más información -->
-                  <div class="mt-4">
-                      <a class="block w-full text-center bg-gradient-to-r from-[#F22E52] via-[#F24C27] to-[#F2780C] text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
-                          Más información
-                      </a>
-                  </div>
-              </div>
-          </div>
-      }
+        <!--Ubicacion del evento-->
+        <p class="text-sm text-gray-600">
+          <span class="font-semibold">Estado:</span> {{ event.state }}
+        </p>
+        <p class="text-sm text-gray-600">
+          <span class="font-semibold">Ciudad:</span> {{ event.city }}
+        </p>
+        <p class="text-sm text-gray-600">
+          <span class="font-semibold">País:</span> {{ event.country }}
+        </p>
+
+
+        <!-- Botón para más información -->
+        <div class="mt-4">
+          <a [routerLink]="['/event', event.id]"
+            class="block w-full text-center bg-gradient-to-r from-[#F22E52] via-[#F24C27] to-[#F2780C] text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">
+            Más información
+          </a>
+        </div>
+      </div>
+    </div>
+    }
   </div>
 </div>
