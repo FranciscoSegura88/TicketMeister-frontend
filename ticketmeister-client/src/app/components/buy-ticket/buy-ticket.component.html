@@ -1,0 +1,64 @@
+<div class="container mx-auto p-6">
+  @if (event) {
+  <div class="flex flex-col md:flex-row gap-6 items-center h-full">
+    <!-- Lado izquierdo: Poster del evento -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img [src]="event.posterUrl" [alt]="event.title" class="w-full h-auto rounded-lg shadow-lg">
+    </div>
+
+    <!-- Lado derecho: Formulario de compra (Centrado verticalmente) -->
+    <div class="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg flex flex-col h-full self-center">
+      <h2 class="text-4xl font-bold text-[#F22E52] mb-6 text-center">Comprar boletos</h2>
+
+      <form (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col">
+          <label for="nombre" class="text-lg font-medium text-gray-700">Nombre</label>
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="formData.nombre" required
+            class="w-full p-3 h-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F2780C] focus:outline-none">
+        </div>
+
+        <div class="flex flex-col">
+          <label for="apellidos" class="text-lg font-medium text-gray-700">Apellidos</label>
+          <input type="text" id="apellidos" name="apellidos" [(ngModel)]="formData.apellidos" required
+            class="w-full p-3 h-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F2780C] focus:outline-none">
+        </div>
+
+        <div class="flex flex-col">
+          <label for="correo" class="text-lg font-medium text-gray-700">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" [(ngModel)]="formData.correo" required
+            class="w-full p-3 h-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F2780C] focus:outline-none">
+        </div>
+
+        <div class="flex flex-col">
+          <label for="telefono" class="text-lg font-medium text-gray-700">Teléfono</label>
+          <input type="number" id="telefono" name="telefono" [(ngModel)]="formData.telefono" required
+            class="w-full p-3 h-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F2780C] focus:outline-none">
+        </div>
+
+        <!-- Cantidad de boletos -->
+        <div class="col-span-2 flex justify-center items-center space-x-2">
+          <div class="flex items-center bg-gray-200 rounded-lg overflow-hidden h-12">
+            <button type="button" (click)="decrement()" class="px-4 py-2 bg-red-500 text-white hover:bg-red-600 transition h-full">
+              -
+            </button>
+            <span class="text-xl font-semibold w-16 text-center bg-white flex items-center justify-center h-full">
+              {{ formData.cantidad }}
+            </span>
+            <button type="button" (click)="increment()" class="px-4 py-2 bg-green-500 text-white hover:bg-green-600 transition h-full">
+              +
+            </button>
+          </div>
+
+          <button type="submit" class="bg-gradient-to-r from-[#F22E52] via-[#F24C27] to-[#F2780C] text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors h-12">
+            Comprar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  } @else {
+  <div class="text-center py-8">
+    <p class="text-gray-700 text-xl">Cargando información del evento...</p>
+  </div>
+  }
+</div>

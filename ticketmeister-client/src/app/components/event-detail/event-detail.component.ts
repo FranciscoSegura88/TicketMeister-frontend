@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';  // Importa Router
 import { EventService, Event } from '../../services/event.service';
 import * as L from 'leaflet';  // Importa Leaflet
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,8 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private router: Router  // Inyecta Router
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +42,13 @@ export class EventDetailComponent implements OnInit {
         this.errorMessage = 'No se pudo cargar la información del evento. Inténtalo de nuevo más tarde.';
       }
     });
+  }
+
+  // Navegar al componente de compra de boletos
+  goToBuyTickets(): void {
+    if (this.event) {
+      this.router.navigate(['/buy-tickets', this.event.id]);  // Navega a la ruta de compra de boletos
+    }
   }
 
   private initMap(): void {
@@ -71,7 +79,7 @@ export class EventDetailComponent implements OnInit {
   private updateMap(): void {
     if (this.event && this.map) {
       this.getTheaterCoordinates(this.event.theater).then(coordinates => {
-        this.map!.setView(coordinates, 17);  // Centra el mapa en la ubicación del teatro
+        this.map!.setView(coordinates, 15);  // Centra el mapa en la ubicación del teatro
         L.marker(coordinates).addTo(this.map!)
           .bindPopup(this.event!.theater)
           .openPopup();

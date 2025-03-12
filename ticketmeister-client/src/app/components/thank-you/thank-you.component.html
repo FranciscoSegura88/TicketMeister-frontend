@@ -1,0 +1,41 @@
+<div class="container mx-auto p-6">
+  <div class="flex flex-col items-center">
+    <!-- Título de agradecimiento -->
+    <h1 class="text-4xl font-bold text-[#F22E52] mb-6">¡Gracias por tu compra!</h1>
+
+    <!-- Tarjeta con los detalles de la compra -->
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="flex flex-col md:flex-row">
+        <!-- Imagen del evento -->
+        <div class="w-full md:w-1/2">
+          <img [src]="event?.posterUrl" [alt]="event?.title" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Detalles de la compra -->
+        <div class="w-full md:w-1/2 p-6">
+          <h2 class="text-2xl font-bold text-[#F22E52] mb-4">{{ event?.title }}</h2>
+
+          <!-- Información del comprador -->
+          <div class="space-y-4">
+            <p class="text-lg text-gray-700"><strong>Nombre:</strong> {{ nombre }} {{ apellidos }}</p>
+            <p class="text-lg text-gray-700"><strong>Correo electrónico:</strong> {{ correo }}</p>
+            <p class="text-lg text-gray-700"><strong>Teléfono:</strong> {{ telefono }}</p>
+            <p class="text-lg text-gray-700"><strong>Cantidad de boletos:</strong> {{ cantidad }}</p>
+          </div>
+
+          <!-- Lugar del evento -->
+          <div class="mt-6">
+            <h3 class="text-xl font-semibold text-[#F22E52] mb-2">Lugar del evento:</h3>
+            <p class="text-lg text-gray-700">{{ event?.theater }}</p>
+            <p class="text-lg text-gray-700">{{ event?.city }}, {{ event?.state }}, {{ event?.country }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón para volver al inicio -->
+    <a [routerLink]="['/content']" class="mt-6 inline-block bg-[#F22E52] text-white px-6 py-2 rounded-lg text-xl">
+      Volver al inicio
+    </a>
+  </div>
+</div>
